@@ -19,4 +19,4 @@
 
 К Airflow и Spark был подключен мониторинг + логирование. Для визуализации был создан простой дашборд с использованием датасурсов Zabbix и Loki.
 
-![Админка spark](pictures\grafana.png)
+![Grafana](pictures/grafana.png)
