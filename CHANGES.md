@@ -6,9 +6,9 @@
 
 В docker-compose добавлен spark + появился dag с обработкой данных и обучением простой модели c использованием pyspark.
 
-![DAG завершился успешно](pictures\spark_dag_airflow.png)
+![DAG завершился успешно](pictures/spark_dag_airflow.png)
 
-![Админка spark](pictures\spark_admin.png)
+![Админка spark](pictures/spark_admin.png)
 
 
 # Lab 3
