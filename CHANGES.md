@@ -6,11 +6,17 @@
 
 В docker-compose добавлен spark + появился dag с обработкой данных и обучением простой модели c использованием pyspark.
 
-![DAG завершился успешно](pictures\spark_dag_airflow.png)
+![DAG завершился успешно](pictures/spark_dag_airflow.png)
 
-![Админка spark](pictures\spark_admin.png)
+![Админка spark](pictures/spark_admin.png)
 
 
 # Lab 3
 
 Создан CI/CD пайплайн на GitHub Actions для автоматического тестирования, сборки и деплоя приложения. Тестируются наличие директорий `dags/` и `spark/`. Сборка пропускается для веток с префиксом `feature/`, деплой выполняется только для веток `main`, `master`, `develop` и при пуше тегов `v*`.
+
+# Lab 4
+
+К Airflow и Spark был подключен мониторинг + логирование. Для визуализации был создан простой дашборд с использованием датасурсов Zabbix и Loki.
+
+![Grafana](pictures/grafana_screen.png)
