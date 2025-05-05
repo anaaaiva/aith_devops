@@ -1,7 +1,7 @@
-import logging
 from datetime import datetime, timedelta
 
 import requests
+from pyspark import SparkConf, SparkContext
 from pyspark.ml.feature import VectorAssembler
 from pyspark.ml.regression import LinearRegression
 from pyspark.sql import SparkSession
@@ -11,11 +11,9 @@ from sklearn.metrics import mean_absolute_error, mean_squared_error
 
 
 def run_weather_pipeline_spark():
-    spark = SparkSession.builder.appName("WeatherForecast").master("spark://spark-master:7077").getOrCreate()
-    spark.sparkContext.setLogLevel("INFO")
-
-    logger = logging.getLogger(__name__)
-    logger.setLevel(logging.INFO)
+    conf = SparkConf().setAppName("WeatherForecast").setMaster("spark://spark-master:7077")
+    sc = SparkContext(conf=conf)
+    spark = SparkSession.builder.config(conf=conf).getOrCreate()
 
     today = datetime.today()
     start_date = (today - timedelta(days=1015)).strftime("%Y-%m-%d")

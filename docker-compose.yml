@@ -54,7 +54,10 @@ services:
       - "7077:7077"
     command: "/opt/spark/bin/spark-class org.apache.spark.deploy.master.Master"
     volumes:
-      - ${AIRFLOW_PROJ_DIR:-.}/spark:/opt/airflow/spark
+      #- ${AIRFLOW_PROJ_DIR:-.}/spark:/opt/airflow/spark
+      - ${AIRFLOW_PROJ_DIR:-.}/spark/conf:/opt/spark/conf
+      - ${AIRFLOW_PROJ_DIR:-.}/logs/spark-master:/opt/spark/logs
+
 
   spark-worker:
     container_name: spark-worker
@@ -65,7 +68,10 @@ services:
       - "7000:7000"
     command: "/opt/spark/bin/spark-class org.apache.spark.deploy.worker.Worker spark://spark-master:7077"
     volumes:
-      - ${AIRFLOW_PROJ_DIR:-.}/spark:/opt/airflow/spark
+      #- ${AIRFLOW_PROJ_DIR:-.}/spark:/opt/airflow/spark
+      - ${AIRFLOW_PROJ_DIR:-.}/spark/conf:/opt/spark/conf
+      - ${AIRFLOW_PROJ_DIR:-.}/logs/spark-worker:/opt/spark/logs
+
 
   airflow-webserver:
     <<: *airflow-common

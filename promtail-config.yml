@@ -16,3 +16,10 @@ scrape_configs:
         labels:
           job: airflow_logs
           __path__: /opt/airflow/logs/dag_id*/run_id*/task_id*/*.log
+  - job_name: spark-master-logs
+    static_configs:
+      - targets:
+          - localhost
+        labels:
+          job: spark-master-logs
+          __path__: /opt/airflow/logs/spark-master/*.log
